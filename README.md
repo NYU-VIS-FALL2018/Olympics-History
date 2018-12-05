@@ -16,6 +16,6 @@ Our final product will look something like below.
 ![Screenhot](screenshot2.jpg)
 
 ## More
-[DEMO](https://nyu-vis-fall2018.github.io/project-template/)
+[DEMO](https://nyu-vis-fall2018.github.io/Olympics-History/index.html)
 
-[Project Descrioption](Group9_Storyboarding.pdf)
+[Project Description](Group9_Storyboarding.pdf)
