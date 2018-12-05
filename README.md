@@ -1,5 +1,5 @@
 # 120 Years of Olympics History
-**Authors**: Ayush Sethi (as11500), Vaibhav Lodha (vl1015), Vishwali Mhasawade (vvm248@)
+**Authors**: Ayush Sethi (as11500), Vaibhav Lodha (vl1015), Vishwali Mhasawade (vvm248)
 
 Group 9 
 
