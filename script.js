@@ -1,5 +1,27 @@
 $( document ).ready(function() {
    // Check breakpoint
+var order = {
+  "Rest of Europe":1,
+  "Germany":2,
+  "France":3,
+  "Italy":4,
+  "UK":5,
+  "Rest of North America":6,
+  "US":7,
+  "Soviet Union":8,
+  "Unified Team":9,
+  "Russia":10,
+  "China":11,
+  "Rest of Asia":12,
+  "Australia":13,
+  "Rest of Australia":14,
+  "Africa":15,
+  "South America":16
+}  
+
+// var year = ['1896','1900','1904','1908','1912','1916','1920','1924','1928','1932','1936','1940','1944','1948','1952','1956','1960'
+//             ,'1964','1968','1972','1976','1980','1984','1988','1992','1996','2000','2004','2008','2012','2016']
+
 function breakCalc(x){
   x <= 480 ? y = 'xs' : y = 'md';
   return y;
@@ -57,9 +79,11 @@ function tipX(x){
 function chart(column, filterBy, groupBy) {
 
   // basic chart dimensions
-  var margin = {top: 20, right: 1, bottom: 30, left: 0};
-  var width = $('.chart-wrapper').width() - margin.left - margin.right;
-  var height = breakHeight(breakpoint) - margin.top - margin.bottom;
+  var margin = {top: 20, right: 10, bottom: 30, left: 10};
+  var width = $('.chart-wrapper').width() - margin.left - margin.right-50;
+  var height = breakHeight(breakpoint) - margin.top - margin.bottom-120;
+  console.log("width",width);
+  console.log("height",height);
 
   // chart top used for placing the tooltip
   var chartTop = $('.chart.'+groupBy+'.'+filterBy).offset().top;
@@ -89,18 +113,39 @@ function chart(column, filterBy, groupBy) {
   // there's definitely a better way to do this
 
   //var colorrange = ['#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854','#ffd92f','#e5c494','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3'];
-  var colorrange = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3'];
-
+  // var colorrange = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3','#b3b3b3'];
+  var colorrange = {
+                    "Australia":"#fec44f",
+                    "Rest of Australia":"#C2AC48",
+                    "Africa":"#C66D7C",
+                    "South America":"#756bb1",
+                    "China":"#A3C8AF",
+                    "Russia":"#879e54",
+                    "Soviet Union":"#677D6E",
+                    "Unified Team":"#4a5d51",
+                    "Rest of Asia":"#bae4b3",
+                    "US":"#B55F5F",
+                    "Rest of North America":"#D5A4A4",
+                    "Germany":"#107c90",
+                    "Italy":"#6F8EA3",
+                    "France":"#98C2E0",
+                    "UK":"#5A85A2",
+                    "Rest of Europe":"#93ACBC"
+                    }
+  // console.log(range(colorrange)) 
 
   var z = d3.scale.ordinal()
       .range(colorrange);
 
-  console.log(z)
+  // console.log(z)
   // the x-axis. note that the ticks are years, and we'll show every 5 years
   var xAxis = d3.svg.axis()
       .scale(x)
       .orient("bottom")
-      .ticks(d3.timeYears, 4);
+      .innerTickSize(-height)
+      .outerTickSize(0)
+      .tickPadding(10)
+      .ticks(d3.time.years, 4);
 
   // stacked layout. the order is reversed to get the largest value on top
   // if you change the order to inside-out, the streams get all mixed up and look cool
@@ -112,13 +157,9 @@ function chart(column, filterBy, groupBy) {
       .order("input")
       .values(function(d) { return d.values; })
       .x(function(d) { 
-        //console.log(d.date)
         return d.date; })
-      .y(function(d) { 
-        //console.log(d.value)
+      .y(function(d) {
         return d.value; });
-
-  //console.log(stack)
 
   var nest = d3.nest()
       .key(function(d) { return d.key; });
@@ -161,15 +202,16 @@ function chart(column, filterBy, groupBy) {
     var legend = []
     layers.forEach(function(d,i){
       var obj = {};
-      if (i<14){
+      if (i<15){
         obj.key = d.key;
-        obj.color = colorrange[i];
+        // console.log(colorrange[d.key]);
+        obj.color = colorrange[d.key];
         legend.push(obj);
       }
     });
 
     // others
-    if (layers.length>13){legend.push({key: "Other",color: "#b3b3b3"});}
+    // if (layers.length>13){legend.push({key: "Other",color: "#b3b3b3"});}
 
     legend.forEach(function(d,i){
       $('.chart.'+groupBy+'.'+filterBy+' .legend').append('<div class="item legendSq"><div class="swatch" style="background: '+d.color+'"></div>'+d.key+'</div>');
@@ -210,7 +252,7 @@ function chart(column, filterBy, groupBy) {
 
     // it is necessary to add an extra year to the data (as well as duplicate the data for the final year)
     // so that the chart does not get cut off on the right side
-    for (var i = 1896;i<2016;i+=4){
+    for (var i = 1896;i<2020;i+=4){
 
       var currYear = group[i];
 
@@ -245,14 +287,24 @@ function chart(column, filterBy, groupBy) {
   }
 
   // now we call the data, as the rest of the code is dependent upon data
-  d3.csv("final_dataV3.csv", function(data) {
+  d3.csv("final_dataV5.csv", function(data) {
 
     // parse the data (see parsing function, above)
     data = parse(data);
     //console.log(data)
 
     // generate our layers
-    var layers = stack(nest.entries(data));
+    var unsorted = nest.entries(data);
+    unsorted.forEach(function(elem){
+      elem.sortOrder = order[elem.key]
+    })
+    unsorted.sort(function(a,b){
+      return a.sortOrder-b.sortOrder
+    })
+
+    var layers = stack(unsorted);
+    
+    console.log(layers)
 
     // our legend is based on our layers
     legend(layers);
@@ -267,7 +319,7 @@ function chart(column, filterBy, groupBy) {
       .enter().append("path")
         .attr("class", "layer")
         .attr("d", function(d) { return area(d.values); })
-        .style("fill", function(d, i) { return z(i); });
+        .style("fill", function(d, i) { return colorrange[d.key]; });
 
     svg.append("g")
         .attr("class", "x axis")
@@ -326,7 +378,7 @@ function chart(column, filterBy, groupBy) {
           .style("position", "absolute")
           .style("z-index", "19")
           .style("width", "2px")
-          .style("height", "460px")
+          .style("height", "90%")
           .style("top", "10px")
           .style("bottom", "30px")
           .style("left", "0px")
@@ -350,7 +402,7 @@ function chart(column, filterBy, groupBy) {
      .attr('width', width)
      .attr('class', 'curtain')
      .attr('transform', 'rotate(180)')
-     .style('fill', '#fcfcfc')
+     .style('fill', 'white')
 
     // Create a shared transition for anything we're animating
     var t = svg.transition()
@@ -372,15 +424,100 @@ function chart(column, filterBy, groupBy) {
   });
 
 }
-
-// get the various arguments from the chart div attributes
-// if you're making one chart, this approach is unnecessary
-// however, for several stream graphs on one page, this approach is useful
-// it allows you to decide how to query the data in the html by assigning various
-// attributes to the chart div.
 var column = $('.chart').attr('column');
 var groupBy = $('.chart').attr("groupBy");
 var filterBy = $('.chart').attr("filterBy");
 $('.chart').addClass(groupBy).addClass(filterBy);
 chart(column,filterBy,groupBy); 
+
+// ---------------------------------------------------------------------------------------------------
+
+
+var currentCard = 0;
+
+var data = [
+  {"title":"Description",
+   "body":"Keeping in sight the history of Olympics, we are trying to tell the history of our world in the last century. \
+            When Olympics started, victories were dominated by a handful of countries namely United States, \
+            Britain, France, Germany. While most of the countries were still struggling with colonial rule or monarchies, \
+            these countries had already started their progress in full swing. As the time progressed, more countries started to \
+            win, signaling the growth of other parts of world as well. When the olympics began, the medal winners were clustered \
+            around West, but now it has spread across entire globe.But this path has not been a smooth one. There were several \
+            hiccups on the way. We have picked up select moments of the last century which had their impact on entire world \
+            and can also be seen through the Olympics.",
+   "image":""
+   },
+  {"title":"Year - 1896",
+   "body":"In the first Olympic games in 1896, medals were awarded to 11 teams and most of them\
+            were either from Europe or from the United States. At this time, much of the world was a part of\
+            European colonies and the number of teams winning Olympic medals reflects this.","left_margin":"0%",
+    "image":"1896.jpg"},
+
+  {"title":"Year - (1914 - 1918)",
+   "body":"The sixth olympic games were due to be held in Berlin in 1916, but due to the \
+            raging war across the globe, games were cancelled.","left_margin":"16%",
+    "image":"ww1.jpg"},
+
+  {"title":"Year - (1920 & 1924)",
+   "body":"In 1920 Olympics were awarded to Antwerp in hopes of bringing a spirit of renewal to Belgium,\
+             which had been devastated during World War I. The defeated countries—Germany, Austria, Hungary, Bulgaria, and \
+             Turkey—were not invited. While all other banned nations were invited back in 1924, Germany was again not invited.","left_margin":"20.8%",
+    "image":"1924.jpg"},
+
+  {"title":"Year - (1939 - 1945)",
+   "body":"The 1940 Olympic Games were originally set to be hosted by Tokyo. However, \
+            the Japanese pulled out in 1938, due to the Second Sino-Japanese War, which broke out in 1937. The Games were then awarded to \
+            the runners-up in the original bidding process, Helsinki. The Games were cancelled for a second time when \
+            the Winter War broke out between Finland and the Soviet Union. After this, the Games were then suspended \
+            indefinitely, whilst the Second World War played out. The Olympics did not take place again until 1948.   ","left_margin":"36.9%",
+    "image":"Atomic-Bomb-US.jpg"},
+
+  {"title":"Year - 1948",
+   "body":"The summer games were held in London when they resumed in 1948. Because of post-war conditions, \
+            the 1948 Olympics were called the “Austerity Games.” Athletes were asked to bring their own towels. Germany and Japan, \
+            the Axis powers in World War II, were not invited to the 1948 Games. ","left_margin":"41.5%",
+    "image":"1948.jpg"},
+
+  {"title":"Year - 1980",
+   "body":"Soviet Union invaded Afghanistan in 1979, as a sign of protest, the U.S. boycotted the Summer Olympics \
+            when they were held in Moscow in 1980.","left_margin":"67.2%",
+    "image":"1980.jpg"},
+
+  {"title":"Year - 1984",
+   "body":"The Soviets led a counter-boycott when the Games were held in 1984 in Los Angeles. 1984 also marked the\
+            entry  of China back in summer olympics. Since then, China has won medals in every olympics and have been constantly growing.","left_margin":"70.65%",
+    "image":"1980.jpg"},
+
+  {"title":"Year 2016",
+   "body":"The olympics has come a long way, from just 20 counries winning medals in 1896 to 86 countries winning medals\
+            in 2016. If we compare at continent level - Asia shows the most growth.","left_margin":"96%",
+    "image":"2016.jpg"}
+]
+
+$('.title_card').text(data[0].title);
+$('.body_card').text(data[0].body);
+
+$(".arrow-left").click(function() {
+  if(currentCard>0) currentCard-=1
+  if(currentCard === 0) $('.vl').css("opacity", 0);
+  else $('.vl').css("opacity", 0.2);
+
+    $('.body_card').text(data[currentCard].body) 
+    $('.title_card').text(data[currentCard].title)
+    $(".img").attr("src",data[currentCard].image);
+    $('.vl').css("margin-left", data[currentCard].left_margin);
+});
+
+
+$(".arrow-right").click(function() {
+  if(currentCard<8) currentCard+=1
+  if(currentCard === 0) $('.vl').css("opacity", 0);
+  else $('.vl').css("opacity", 0.2);
+    
+   $('.body_card').text(data[currentCard].body) 
+   $('.title_card').text(data[currentCard].title)
+   $(".img").attr("src",data[currentCard].image);
+   $('.vl').css('margin-left',data[currentCard].left_margin);
+});
+
 });
