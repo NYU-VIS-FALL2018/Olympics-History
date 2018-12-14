@@ -53,7 +53,7 @@ _.groupByMulti = function (obj, values, context) {
 
 // function to decide whether to pluralize the word "award" in the tooltip
 function awardPlural(x){
-  x == 1 ? y = 'award' : y = 'awards';
+  x == 1 ? y = 'medal' : y = 'medals';
   return y;
 }
 
