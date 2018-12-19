@@ -451,18 +451,18 @@ var data = [
    "body":"In the first Olympic games in 1896, medals were awarded to 11 teams and most of them\
             were either from Europe or from the United States. At this time, much of the world was a part of\
             European colonies and the number of teams winning Olympic medals reflects this.","left_margin":"0%",
-    "image":"1896.jpg"},
+    "image":"images/1896.jpg"},
 
   {"title":"Year - (1914 - 1918)",
    "body":"The sixth olympic games were due to be held in Berlin in 1916, but due to the \
             raging war across the globe, games were cancelled.","left_margin":"16%",
-    "image":"ww1.jpg"},
+    "image":"images/ww1.jpg"},
 
   {"title":"Year - (1920 & 1924)",
    "body":"In 1920 Olympics were awarded to Antwerp in hopes of bringing a spirit of renewal to Belgium,\
              which had been devastated during World War I. The defeated countries—Germany, Austria, Hungary, Bulgaria, and \
              Turkey—were not invited. While all other banned nations were invited back in 1924, Germany was again not invited.","left_margin":"20.8%",
-    "image":"1924.jpg"},
+    "image":"images/1924.jpg"},
 
   {"title":"Year - (1939 - 1945)",
    "body":"The 1940 Olympic Games were originally set to be hosted by Tokyo. However, \
@@ -470,28 +470,28 @@ var data = [
             the runners-up in the original bidding process, Helsinki. The Games were cancelled for a second time when \
             the Winter War broke out between Finland and the Soviet Union. After this, the Games were then suspended \
             indefinitely, whilst the Second World War played out. The Olympics did not take place again until 1948.   ","left_margin":"36.9%",
-    "image":"Atomic-Bomb-US.jpg"},
+    "image":"images/Atomic-Bomb-US.jpg"},
 
   {"title":"Year - 1948",
    "body":"The summer games were held in London when they resumed in 1948. Because of post-war conditions, \
             the 1948 Olympics were called the “Austerity Games.” Athletes were asked to bring their own towels. Germany and Japan, \
             the Axis powers in World War II, were not invited to the 1948 Games. ","left_margin":"41.5%",
-    "image":"1948.jpg"},
+    "image":"images/1948.jpg"},
 
   {"title":"Year - 1980",
    "body":"Soviet Union invaded Afghanistan in 1979, as a sign of protest, the U.S. boycotted the Summer Olympics \
             when they were held in Moscow in 1980.","left_margin":"67.2%",
-    "image":"1980.jpg"},
+    "image":"images/1980.jpg"},
 
   {"title":"Year - 1984",
    "body":"The Soviets led a counter-boycott when the Games were held in 1984 in Los Angeles. 1984 also marked the\
             entry  of China back in summer olympics. Since then, China has won medals in every olympics and have been constantly growing.","left_margin":"70.65%",
-    "image":"1980.jpg"},
+    "image":"images/1980.jpg"},
 
   {"title":"Year 2016",
    "body":"The olympics has come a long way, from just 20 counries winning medals in 1896 to 86 countries winning medals\
             in 2016. If we compare at continent level - Asia shows the most growth.","left_margin":"96%",
-    "image":"2016.jpg"}
+    "image":"images/2016.jpg"}
 ]
 
 $('.title_card').text(data[0].title);
